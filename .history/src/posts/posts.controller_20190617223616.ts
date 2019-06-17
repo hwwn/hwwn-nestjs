@@ -31,6 +31,6 @@ export class PostsController {
 
   @Post()
   store(@Body() body) {
-    console.log(body);
+    console, log(body);
   }
 }
