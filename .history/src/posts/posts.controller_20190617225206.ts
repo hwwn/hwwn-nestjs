@@ -32,6 +32,6 @@ export class PostsController {
 
   @Post()
   store(@Body() post: CreatPostDto) {
-    console.log(post.title);
+    console.log(post);
   }
 }

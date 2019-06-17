@@ -1,4 +1,4 @@
-import { CreatPostDto } from './post.dto';
+import { CreatPostDto } from './../../.history/src/posts/post.dto_20190617225013';
 import {
   Controller,
   Get,
@@ -32,6 +32,6 @@ export class PostsController {
 
   @Post()
   store(@Body() post: CreatPostDto) {
-    console.log(post.title);
+    console.log(post);
   }
 }
