@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { PostsController } from './posts/posts.controller';
+import { DemoService } from './demo/demo.service';
 import { DemoService } from './posts/providers/demo/demo.service';
 
 @Module({
