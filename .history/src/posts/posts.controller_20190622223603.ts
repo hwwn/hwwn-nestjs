@@ -33,6 +33,7 @@ export class PostsController {
 
   @Post()
   store(@Body() post: CreatPostDto) {
+    // console.log(post.title);
     return this.demoService.create(post);
   }
 }
