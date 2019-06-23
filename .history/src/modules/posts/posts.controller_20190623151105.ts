@@ -10,7 +10,6 @@ import {
   Body,
   HttpException,
   HttpStatus,
-  ForbiddenException,
 } from '@nestjs/common';
 import { DemoService } from './providers/demo/demo.service';
 
@@ -34,8 +33,7 @@ export class PostsController {
 
   @Post()
   store(@Body() post: CreatPostDto) {
-    // throw new HttpException('没有权限', HttpStatus.FORBIDDEN);
-    throw new ForbiddenException('没有权限');
+    throw new HttpException('没有权限', HttpStatus.FORBIDDEN);
     return this.demoService.create(post);
   }
 }
