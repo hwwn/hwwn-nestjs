@@ -11,6 +11,6 @@ import { PostsModule } from './modules/posts/posts.module';
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(DemoMiddleware).forRoutes('posts');
+    consumer.apply(DemoMiddleware).forRoutes('post');
   }
 }
