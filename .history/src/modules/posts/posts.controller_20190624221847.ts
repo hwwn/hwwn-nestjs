@@ -17,7 +17,6 @@ import {
 import { DemoService } from './providers/demo/demo.service';
 
 @Controller('posts')
-// @UseFilters(DemoFilter)
 export class PostsController {
   constructor(private readonly demoService: DemoService) {
     this.demoService = demoService;
@@ -36,9 +35,10 @@ export class PostsController {
   }
 
   @Post()
+  @UseFilters(DemoFilter)
   store(@Body() post: CreatPostDto) {
     // throw new HttpException('没有权限', HttpStatus.FORBIDDEN);
     throw new ForbiddenException('没有权限');
-    // return this.demoService.create(post);
+    return this.demoService.create(post);
   }
 }

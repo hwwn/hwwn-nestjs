@@ -17,7 +17,7 @@ import {
 import { DemoService } from './providers/demo/demo.service';
 
 @Controller('posts')
-// @UseFilters(DemoFilter)
+@UseFilters(DemoFilter)
 export class PostsController {
   constructor(private readonly demoService: DemoService) {
     this.demoService = demoService;

@@ -37,8 +37,8 @@ export class PostsController {
 
   @Post()
   store(@Body() post: CreatPostDto) {
-    // throw new HttpException('没有权限', HttpStatus.FORBIDDEN);
-    throw new ForbiddenException('没有权限');
+    throw new HttpException('没有权限', HttpStatus.FORBIDDEN);
+    // throw new ForbiddenException('没有权限');
     // return this.demoService.create(post);
   }
 }
