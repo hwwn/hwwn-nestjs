@@ -13,6 +13,8 @@ import {
   HttpStatus,
   ForbiddenException,
   UseFilters,
+  UsePipes,
+  ValidationPipe,
 } from '@nestjs/common';
 import { DemoService } from './providers/demo/demo.service';
 
@@ -36,9 +38,10 @@ export class PostsController {
   }
 
   @Post()
+  @UsePipes(ValidationPipe)
   store(@Body() post: CreatPostDto) {
     // throw new HttpException('没有权限', HttpStatus.FORBIDDEN);
-    throw new ForbiddenException('没有权限');
-    // return this.demoService.create(post);
+    // throw new ForbiddenException('没有权限');
+    return this.demoService.create(post);
   }
 }
