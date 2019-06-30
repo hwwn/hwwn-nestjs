@@ -1,4 +1,4 @@
-import { LoggingInterceptor } from './../.history/src/core/interceptors/logging.interceptor_20190630200707';
+import { LoggingInterceptor } from './core/interceptors/logging.interceptor';
 import { DemoRolesGuard } from './core/guards/demo-roles.guard';
 import { DemoMiddleware } from './core/middlewares/demo.middleware';
 import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
