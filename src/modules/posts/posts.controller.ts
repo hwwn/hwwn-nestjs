@@ -15,14 +15,12 @@ import {
   UseFilters,
   UsePipes,
   ValidationPipe,
-  ParseIntPipe,
-  UseGuards,
+  SetMetadata,
 } from '@nestjs/common';
 import { DemoService } from './providers/demo/demo.service';
 
 @Controller('posts')
 // @UseFilters(DemoFilter)
-@UseGuards(Dem)
 export class PostsController {
   constructor(private readonly demoService: DemoService) {
     this.demoService = demoService;
@@ -34,7 +32,7 @@ export class PostsController {
   }
 
   @Get(':id')
-  show(@Param('id', ParseIntPipe) id) {
+  show(@Param('id') id) {
     console.log('id:', typeof id);
 
     return {
@@ -44,6 +42,7 @@ export class PostsController {
 
   @Post()
   @UsePipes(ValidationPipe)
+  @SetMetadata('roles', ['member'])
   store(@Body() post: CreatPostDto) {
     // throw new HttpException('没有权限', HttpStatus.FORBIDDEN);
     // throw new ForbiddenException('没有权限');
