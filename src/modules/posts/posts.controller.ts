@@ -24,7 +24,7 @@ import { Roles } from './../../core/decorators/roles.decorator';
 
 @Controller('posts')
 // @UseFilters(DemoFilter)
-@UseInterceptors(LoggingInterceptor)
+// @UseInterceptors(LoggingInterceptor)
 export class PostsController {
   constructor(private readonly demoService: DemoService) {
     this.demoService = demoService;

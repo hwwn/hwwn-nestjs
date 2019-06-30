@@ -1,10 +1,11 @@
+import { LoggingInterceptor } from './../.history/src/core/interceptors/logging.interceptor_20190630200707';
 import { DemoRolesGuard } from './core/guards/demo-roles.guard';
 import { DemoMiddleware } from './core/middlewares/demo.middleware';
 import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { PostsModule } from './modules/posts/posts.module';
-import { APP_GUARD } from '@nestjs/core';
+import { APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';
 
 @Module({
   imports: [PostsModule],
@@ -14,6 +15,10 @@ import { APP_GUARD } from '@nestjs/core';
     {
       provide: APP_GUARD,
       useClass: DemoRolesGuard,
+    },
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: LoggingInterceptor,
     },
   ],
 })
