@@ -18,6 +18,7 @@ import {
   SetMetadata,
 } from '@nestjs/common';
 import { DemoService } from './providers/demo/demo.service';
+import { Roles } from './../../core/decorators/roles.decorator';
 
 @Controller('posts')
 // @UseFilters(DemoFilter)
@@ -42,7 +43,8 @@ export class PostsController {
 
   @Post()
   @UsePipes(ValidationPipe)
-  @SetMetadata('roles', ['member'])
+  // @SetMetadata('roles', ['member'])
+  @Roles('member')
   store(@Body() post: CreatPostDto) {
     // throw new HttpException('没有权限', HttpStatus.FORBIDDEN);
     // throw new ForbiddenException('没有权限');
