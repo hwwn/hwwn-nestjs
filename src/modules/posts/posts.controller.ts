@@ -21,6 +21,7 @@ import {
 } from '@nestjs/common';
 import { DemoService } from './providers/demo/demo.service';
 import { Roles } from './../../core/decorators/roles.decorator';
+import { TransformInterceptor } from './../../core/interceptors/transform.interceptor';
 
 @Controller('posts')
 // @UseFilters(DemoFilter)
@@ -31,6 +32,7 @@ export class PostsController {
   }
 
   @Get()
+  @UseInterceptors(TransformInterceptor)
   index() {
     return this.demoService.findAll();
   }
