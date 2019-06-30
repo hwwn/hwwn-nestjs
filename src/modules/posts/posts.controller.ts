@@ -1,3 +1,4 @@
+import { LoggingInterceptor } from './../../core/interceptors/logging.interceptor';
 import { DemoFilter } from './../../core/filters/demo.filter';
 import { CreatPostDto } from './post.dto';
 import {
@@ -16,12 +17,14 @@ import {
   UsePipes,
   ValidationPipe,
   SetMetadata,
+  UseInterceptors,
 } from '@nestjs/common';
 import { DemoService } from './providers/demo/demo.service';
 import { Roles } from './../../core/decorators/roles.decorator';
 
 @Controller('posts')
 // @UseFilters(DemoFilter)
+@UseInterceptors(LoggingInterceptor)
 export class PostsController {
   constructor(private readonly demoService: DemoService) {
     this.demoService = demoService;
