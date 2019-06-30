@@ -1,3 +1,4 @@
+import { ErrorsInterceptor } from './../../core/interceptors/errors.interceptor';
 import { LoggingInterceptor } from './../../core/interceptors/logging.interceptor';
 import { DemoFilter } from './../../core/filters/demo.filter';
 import { CreatPostDto } from './post.dto';
@@ -32,9 +33,11 @@ export class PostsController {
   }
 
   @Get()
-  @UseInterceptors(TransformInterceptor)
+  // @UseInterceptors(TransformInterceptor)
+  @UseInterceptors(ErrorsInterceptor)
   index() {
-    return this.demoService.findAll();
+    throw new ForbiddenException();
+    // return this.demoService.findAll();
   }
 
   @Get(':id')
