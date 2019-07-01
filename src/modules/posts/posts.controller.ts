@@ -1,3 +1,4 @@
+import { DemoPipe } from './../../core/pipes/demo.pipe';
 import { User } from './../../core/decorators/user.decorator';
 import { ErrorsInterceptor } from './../../core/interceptors/errors.interceptor';
 import { LoggingInterceptor } from './../../core/interceptors/logging.interceptor';
@@ -20,6 +21,7 @@ import {
   ValidationPipe,
   SetMetadata,
   UseInterceptors,
+  ParseIntPipe,
 } from '@nestjs/common';
 import { DemoService } from './providers/demo/demo.service';
 import { Roles } from './../../core/decorators/roles.decorator';
@@ -42,7 +44,7 @@ export class PostsController {
   }
 
   @Get(':id')
-  show(@Param('id') id) {
+  show(@Param('id', ParseIntPipe, DemoPipe) id) {
     console.log('id:', typeof id);
 
     return {
