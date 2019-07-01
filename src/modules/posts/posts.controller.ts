@@ -1,3 +1,4 @@
+import { User } from './../../core/decorators/user.decorator';
 import { ErrorsInterceptor } from './../../core/interceptors/errors.interceptor';
 import { LoggingInterceptor } from './../../core/interceptors/logging.interceptor';
 import { DemoFilter } from './../../core/filters/demo.filter';
@@ -53,7 +54,8 @@ export class PostsController {
   @UsePipes(ValidationPipe)
   // @SetMetadata('roles', ['member'])
   @Roles('member')
-  store(@Body('title') post: CreatPostDto) {
+  store(@Body() post: CreatPostDto, @User('demo') user) {
+    console.log(user);
     // throw new HttpException('没有权限', HttpStatus.FORBIDDEN);
     // throw new ForbiddenException('没有权限');
     return this.demoService.create(post);
